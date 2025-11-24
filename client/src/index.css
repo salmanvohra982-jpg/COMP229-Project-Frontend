@@ -1,4 +1,4 @@
-:root {
+/*:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +65,79 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}*/
+
+
+:root {
+  --primary: #2b6cb0;
+}
+
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin: 0;
+  background: #f7f8fb
+}
+
+.app-container {
+  padding: 20px
+}
+
+.navbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06)
+}
+
+.auth-container {
+  max-width: 420px;
+  margin: 32px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06)
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px
+}
+
+button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+.ticket-card {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04)
+}
+
+.small-muted {
+  color: #666;
+  font-size: 0.9rem
 }
