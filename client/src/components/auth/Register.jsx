@@ -1,4 +1,9 @@
-
+/* 
+    File: Register.jsx
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Registration form for creating new users via the backend /api/auth/register endpoint. Supports normal User signup only.
+    Date: November 23 2025
+*/
 
 
 

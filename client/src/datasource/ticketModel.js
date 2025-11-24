@@ -1,7 +1,9 @@
-
-
-
-
+/* 
+    File: ticketModel.js
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Frontend model class defining Ticket field structure used in forms and CRUD operations.
+    Date: November 23 2025
+*/
 
 
 

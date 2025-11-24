@@ -1,13 +1,9 @@
-
-
-
-
-
-
-
-
-
-
+/* 
+    File: api-user.js
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Contains login, registration, and profile-fetching API requests for user authentication and account operations.
+    Date: November 23 2025
+*/
 
 
 

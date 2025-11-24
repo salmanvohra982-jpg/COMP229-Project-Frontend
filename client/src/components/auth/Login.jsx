@@ -1,4 +1,9 @@
-
+/* 
+    File: Login.jsx
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Renders login form UI and handles user authentication using the backend /api/auth/login endpoint.
+    Date: November 23 2025
+*/
 
 
 

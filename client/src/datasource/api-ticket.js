@@ -1,7 +1,9 @@
-
-
-
-
+/* 
+    File: api-ticket.js
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Handles CRUD operations for tickets by communicating with the backend /api/tickets endpoints using Fetch API.
+    Date: November 23 2025
+*/
 
 
 

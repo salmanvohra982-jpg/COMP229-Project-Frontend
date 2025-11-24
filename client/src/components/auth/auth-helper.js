@@ -1,6 +1,9 @@
-
-
-
+/* 
+    File: auth-helper.js
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Manages JWT token storage, decoding, user session handling, and authentication helper functions for the Help Desk frontend.
+    Date: November 23 2025
+*/
 
 
 

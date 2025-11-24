@@ -1,11 +1,9 @@
-
-
-
-
-
-
-
-
+/* 
+    File: MainRouter.jsx
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Defines all React routes for the Help Desk frontend, including public and protected pages, and integrates navigation components.
+    Date: November 23 2025
+*/
 
 
 

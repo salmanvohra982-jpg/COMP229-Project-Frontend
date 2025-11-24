@@ -1,13 +1,9 @@
-
-
-
-
-
-
-
-
-
-
+/* 
+    File: userModel.js
+    Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
+    Description: Frontend model class defining User structure used in the registration form and user creation process.
+    Date: November 23 2025
+*/
 
 
 
