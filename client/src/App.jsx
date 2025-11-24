@@ -3,28 +3,22 @@
     Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
     Description: Root component that initializes React Router and loads MainRouter for page routing.
     Date: November 23 2025
+*/
 
-
-import { BrowserRouter as Router } from "react-router-dom";
-import "./App.css";
-import MainRouter from "./MainRouter";
+import { BrowserRouter } from 'react-router-dom'
+import MainRouter from './MainRouter'
+import Navbar from './components/navbar'
+import './App.css'
 
 function App() {
   return (
-    <Router>
-      <MainRouter />
-    </Router>
-  );
-}
-
-export default App;*/
-
-
-import React from "react";
-import MainRouter from "./MainRouter";
-
-function App(){
-  return <MainRouter />;
+    <BrowserRouter>
+      <Navbar />
+      <main className="app-container">
+        <MainRouter />
+      </main>
+    </BrowserRouter>
+  )
 }
 
 export default App;

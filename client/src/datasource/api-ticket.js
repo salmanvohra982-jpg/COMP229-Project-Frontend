@@ -5,88 +5,41 @@
     Date: November 23 2025
 */
 
-let apiURL = import.meta.env.VITE_APP_APIURL || ""
-import { getToken } from "../components/auth/auth-helper"
+import axios from 'axios'
+const BASE = `${import.meta.env.VITE_APP_APIURL}/api/tickets`;
 
-const list = async (showClosed = false) => {
-    try {
-        const url = apiURL + '/api/tickets' + (showClosed ? '?showClosed=true' : '');
-        let response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-        return await response.json()
-    } catch (err) {
-        console.log(err)
-    }
+
+function headers() {
+    const token = localStorage.getItem('jwt')
+    return { Authorization: `Bearer ${token}` }
 }
 
-const remove = async (id) => {
-    try {
-        let response = await fetch(apiURL + '/api/tickets/' + id, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+ getToken()
-            }
-        })
-        return await response.json()
-    } catch (err) {
-        console.log(err)
-    }
+
+export async function listTickets() {
+    const { data } = await axios.get(BASE, { headers: headers() })
+    return data
 }
 
-const create = async (ticket) => {
-    try {
-        let response = await fetch(apiURL + '/api/tickets/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+ getToken()
-            },
-            body: JSON.stringify(ticket)
-        })
-        return await response.json()
-    } catch (err) {
-        console.log(err)
-    }
+
+export async function getTicket(id) {
+    const { data } = await axios.get(`${BASE}/${id}`, { headers: headers() })
+    return data
 }
 
-const read = async (id) => {
-    try {
-        let response = await fetch(apiURL + '/api/tickets/' + id, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-        return await response.json()
-    } catch (err) {
-        console.log(err)
-    }
+
+export async function createTicket(payload) {
+    const { data } = await axios.post(BASE, payload, { headers: headers() })
+    return data
 }
 
-const update = async (ticket, id) => {
-    try {
-        let response = await fetch(apiURL + '/api/tickets/' + id, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+ getToken()
-            },
-            body: JSON.stringify(ticket)
-        })
-        return await response.json()
-    } catch (err) {
-        console.log(err)
-    }
+
+export async function updateTicket(id, payload) {
+    const { data } = await axios.put(`${BASE}/${id}`, payload, { headers: headers() })
+    return data
 }
 
-export { list, remove, create, read, update }
+
+export async function cancelTicket(id) {
+    const { data } = await axios.delete(`${BASE}/${id}`, { headers: headers() })
+    return data
+}

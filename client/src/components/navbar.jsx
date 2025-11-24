@@ -1,57 +1,46 @@
-/* 
-    File: navbar.jsx
+/*
+    File: Navbar.jsx
     Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
-    Description: Navigation bar component handling authenticated and non-authenticated link visibility, logout, and main site navigation.
+    Description: Navigation bar component providing links to main sections of the Help Desk frontend.
     Date: November 23 2025
 */
 
-import { Link, useNavigate } from "react-router-dom";
-import { isAuthenticated, getUsername, clearJWT, getRole } from "./auth/auth-helper";
+import { Link, useNavigate } from 'react-router-dom'
 
-const Navbar = () => {
-  const navigate = useNavigate();
-  const loggedIn = isAuthenticated();
-  const username = loggedIn ? getUsername() : null;
-  const Role = loggedIn ? getRole() : null;
+function Navbar() {
+    const navigate = useNavigate()
+    const token = localStorage.getItem('jwt')
 
-  const handleLogout = () => {
-    clearJWT();
-    navigate('/users/signin');
-  }
 
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="container">
-        <Link className="navbar-brand" to="/">HelpDesk</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+    const handleLogout = () => {
+        localStorage.removeItem('jwt')
+        navigate('/login')
+    }
 
-        <div className="collapse navbar-collapse" id="navMenu">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/tickets">Tickets</Link></li>
-          </ul>
 
-          <ul className="navbar-nav ms-auto">
-            {!loggedIn && (
-              <>
-                <li className="nav-item"><Link className="nav-link" to="/users/signin">Login</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="/users/signup">Register</Link></li>
-              </>
-            )}
-            {loggedIn && (
-              <>
-                <li className="nav-item"><span className="nav-link">Hello, {username}</span></li>
-                <li className="nav-item"><Link className="nav-link" to="/profile">Profile</Link></li>
-                <li className="nav-item"><button className="btn btn-sm btn-light" onClick={handleLogout}>Logout</button></li>
-              </>
-            )}
-          </ul>
-        </div>
-      </div>
-    </nav>
-  )
+    return (
+        <header className="navbar">
+            <Link to="/">Help Desk</Link>
+
+
+            <div style={{ marginLeft: 'auto', display: 'flex', gap: 12 }}>
+                {!token && (
+                    <>
+                        <Link to="/login">Login</Link>
+                        <Link to="/register">Register</Link>
+                    </>
+                )}
+
+
+                {token && (
+                    <>
+                        <Link to="/tickets">Tickets</Link>
+                        <button onClick={handleLogout}>Logout</button>
+                    </>
+                )}
+            </div>
+        </header>
+    )
 }
 
 export default Navbar;
