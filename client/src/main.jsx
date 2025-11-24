@@ -3,7 +3,7 @@
     Developers: Salman Vahora, Bat An Dinh, Artemis, Edgar, Sriraj Bura
     Description: React entry point that initializes the application, loads global styles, Bootstrap, and renders the App component into the root DOM element.
     Date: November 23 2025
-*/
+
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -20,4 +20,20 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+)*/
+
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
