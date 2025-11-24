@@ -5,36 +5,48 @@
     Date: November 23 2025
 */
 
-
-
-
 import { Routes, Route } from "react-router-dom";
-import Projects from "./components/projects";
-import Home from "./components/Home";
-import About from "./components/About";
-import NotFound from "./components/NotFound";
-import Layout from "./components/Layout";
-import Services from "./components/Services";
-import ListInventory from "./components/inventory/ListInventory";
-import AddInventory from "./components/inventory/AddInventory";
-import EditInventory from "./components/inventory/EditInventory";
-import Signin from "./components/auth/Signin";
-import Signup from "./components/auth/Signup";
+/*import Layout from "./components/Layout";*/
+import Signin from "./components/auth/Login";
+import Signup from "./components/auth/Register";
+import Dashboard from "./pages/Dashboard";
+import CreateTicket from "./pages/CreateTicket";
+import TicketDetails from "./pages/TicketDetails";
+import EditTicket from "./pages/EditTicket";
+import Profile from "./pages/Profile";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+import Navbar from "./components/navbar";
+import ProtectedRoute from "./components/protectedRoute";
 
 function MainRouter() {
     return (
         <div>
-            <Layout />
+            <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/services" element={<Services />} />
                 <Route path="/users/signin" element={<Signin />} />
                 <Route path="/users/signup" element={<Signup />} />
-                <Route path="/inventory/list" element={<ListInventory />} />
-                <Route path="/inventory/add" element={<AddInventory />} />
-                <Route path="/inventory/edit/:id" element={<EditInventory />} />
+
+                {/* Ticket routes - protected */}
+                <Route path="/tickets" element={
+                    <ProtectedRoute><Dashboard /></ProtectedRoute>
+                } />
+                <Route path="/tickets/create" element={
+                    <ProtectedRoute><CreateTicket /></ProtectedRoute>
+                } />
+                <Route path="/tickets/:id" element={
+                    <ProtectedRoute><TicketDetails /></ProtectedRoute>
+                } />
+                <Route path="/tickets/edit/:id" element={
+                    <ProtectedRoute><EditTicket /></ProtectedRoute>
+                } />
+                <Route path="/profile" element={
+                    <ProtectedRoute><Profile /></ProtectedRoute>
+                } />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>

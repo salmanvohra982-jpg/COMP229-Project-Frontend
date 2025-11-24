@@ -5,14 +5,13 @@
     Date: November 23 2025
 */
 
-
-
-let apiURL = import.meta.env.VITE_APP_APIURL
+let apiURL = import.meta.env.VITE_APP_APIURL || ""
 import { getToken } from "../components/auth/auth-helper"
 
-const list = async () => {
+const list = async (showClosed = false) => {
     try {
-        let response = await fetch(apiURL + '/api/inventory/', {
+        const url = apiURL + '/api/tickets' + (showClosed ? '?showClosed=true' : '');
+        let response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -27,7 +26,7 @@ const list = async () => {
 
 const remove = async (id) => {
     try {
-        let response = await fetch(apiURL + '/api/inventory/' + id, {
+        let response = await fetch(apiURL + '/api/tickets/' + id, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -41,16 +40,16 @@ const remove = async (id) => {
     }
 }
 
-const create = async (product) => {
+const create = async (ticket) => {
     try {
-        let response = await fetch(apiURL + '/api/inventory/', {
+        let response = await fetch(apiURL + '/api/tickets/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer '+ getToken()
             },
-            body: JSON.stringify(product)
+            body: JSON.stringify(ticket)
         })
         return await response.json()
     } catch (err) {
@@ -60,7 +59,7 @@ const create = async (product) => {
 
 const read = async (id) => {
     try {
-        let response = await fetch(apiURL + '/api/inventory/' + id, {
+        let response = await fetch(apiURL + '/api/tickets/' + id, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -73,16 +72,16 @@ const read = async (id) => {
     }
 }
 
-const update = async (product, id) => {
+const update = async (ticket, id) => {
     try {
-        let response = await fetch(apiURL + '/api/inventory/' + id, {
+        let response = await fetch(apiURL + '/api/tickets/' + id, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer '+ getToken()
             },
-            body: JSON.stringify(product)
+            body: JSON.stringify(ticket)
         })
         return await response.json()
     } catch (err) {

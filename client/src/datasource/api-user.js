@@ -5,13 +5,11 @@
     Date: November 23 2025
 */
 
-
-
-let apiURL = import.meta.env.VITE_APP_APIURL
+let apiURL = import.meta.env.VITE_APP_APIURL || "";
 
 const signin = async (user) => {
     try {
-        let response = await fetch(apiURL + '/auth/signin', {
+        let response = await fetch(apiURL + '/api/auth/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -25,9 +23,9 @@ const signin = async (user) => {
     }
 }
 
-const create = async (user) => {
+const register = async (user) => {
     try {
-        let response = await fetch(apiURL + '/api/users', {
+        let response = await fetch(apiURL + '/api/auth/register', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -41,4 +39,20 @@ const create = async (user) => {
     }
 }
 
-export { signin, create }
+const getProfile = async (token) => {
+    try {
+        let response = await fetch(apiURL + '/api/auth/profile', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        return await response.json()
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+export { signin, register, getProfile }

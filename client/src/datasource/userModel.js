@@ -5,8 +5,6 @@
     Date: November 23 2025
 */
 
-
-
 class UserModel
 {
     constructor(firstName, lastName, email, password, username){

@@ -5,17 +5,9 @@
     Date: November 23 2025
 */
 
-
-
-
-
-
-
-
-
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react"
-import { create } from "../../datasource/api-user.js";
+import { register } from "../../datasource/api-user.js";
 import UserModel from "../../datasource/userModel.js";
 
 const Signup = () => {
@@ -35,7 +27,7 @@ const Signup = () => {
         if (user.password !== document.getElementById('confirmPasswordTextField').value) {
             setErrorMsg("ERROR: Passwords don't match. Please try again.");
         } else {
-            create(user)
+            register(user)
                 .then(data => {
                     if (data && data.success) {
                         alert(data.message);
